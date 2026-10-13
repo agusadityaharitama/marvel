@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Script from 'next/script'
 import styles from './page.module.css'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useContent } from '@/contexts/ContentContext'
@@ -229,6 +230,15 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
+      {/* Mobichat web widget */}
+      <Script id="mobichat-settings" strategy="afterInteractive">
+        {`window.mobichatSettings = { app_id: "ww_A29s_dALfYfW1XO3irF_-kvqe-3RdIwX" };`}
+      </Script>
+      <Script
+        src="https://sit-app.mobichat.id/js/mobichat-web-widget.js"
+        strategy="lazyOnload"
+      />
     </div>
   )
 }
